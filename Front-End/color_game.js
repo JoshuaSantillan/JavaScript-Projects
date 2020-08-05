@@ -3,19 +3,15 @@
     Author: Joshua Santillan (With the help of Dr. Joshua basteans web dev course)
     Date: 7/28/20
     Descritpion: Manipulated the DOM and created an interactive web page game.
-
 */
-
 //============================
 //Helper Function declarations
 //============================
-
 const pickColor = () => {
     //Get Random # [0,5]
     const random = Math.floor(Math.random() * colors.length)
     return colors[random];
 }
-
 const generateRandomColor = () => {
     // pick r,g,b values between 0 and 255
     const r = Math.floor(Math.random() *256);
@@ -25,7 +21,6 @@ const generateRandomColor = () => {
    // `my sentance here ${r}`
     return `rgb(${r}, ${g}, ${b})`
 }
-
 const generateRandomColors = (num) => {
     // we use this so we can change difficulties
     // make an array and add "num" to array 
@@ -35,10 +30,9 @@ const generateRandomColors = (num) => {
     }
     return output;
 }
-
 //reset the board 
 const reset = () => {
-    colors = generateRandomColors(numSquares);
+    colors = generateRandomColors(numSquares); 
     pickedColor = pickColor();
     resetButton.textContent = "New Colors";
     colorDisplay.textContent = pickedColor;
@@ -53,14 +47,12 @@ const reset = () => {
     message.textContent = "";
     
 }
-
 //using an arrow function with a foreach paramater taking our square array we change the colors to be the same
 const changeColors = (color) => {
     squares.forEach((square) => {
         square.style.backgroundColor = color;
     })
 }
-
 //===========================
 //  INIT VARIABLES(state)
 //===========================
@@ -77,11 +69,9 @@ const resetButton = document.getElementById("resetButton")
 const modeButtons = document.querySelectorAll(".mode");
 let colors = generateRandomColors(numSquares); // setting board up on load
 let pickedColor = pickColor(); //winning color chosen @ random
-
 //===========================
 //          MAIN CODE
 //============================
-
 function main(){   
     colorDisplay.textContent = pickedColor;
     resetButton.addEventListener("click",reset); // being referenced not called 
@@ -89,11 +79,14 @@ function main(){
             button.addEventListener("click",function(){
             modeButtons[0].classList.remove("selected");
             modeButtons[1].classList.remove("selected");
+            modeButtons[2].classList.remove("selected");
             this.classList.add("selected");
             if(this.textContent === "Easy"){
                 numSquares = 3;
-            } else{
+            } else if(this.textContent === "Hard"){
                 numSquares = 6;
+            } else if(this.textContent === "Very Hard"){
+                numSquares = 9;
             }
             reset();
         });
