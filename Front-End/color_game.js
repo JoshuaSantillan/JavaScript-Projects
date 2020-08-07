@@ -1,6 +1,7 @@
 /*  
     Filename: color_game.js
-    Author: Joshua Santillan (With the help of Dr. Joshua basteans web dev course)
+    Author: Joshua Santillan 
+    CS 330
     Date: 7/28/20
     Descritpion: Manipulated the DOM and created an interactive web page game.
 */
